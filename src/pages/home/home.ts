@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 import {AuthService} from './authservice';
 import {Userpage} from '../userpage/userpage';
@@ -17,7 +17,7 @@ export class HomePage {
         password: ''
     };
 
-    constructor(public navCtrl: NavController, public authservice: AuthService) {
+    constructor(public navCtrl: NavController, public authservice: AuthService, public alertCtrl: AlertController) {
         this.authservice.checkLogin().then(data => {
             if(data){
                 this.navCtrl.setRoot(Userpage);
@@ -36,13 +36,23 @@ export class HomePage {
                 if(data) {
                     this.navCtrl.setRoot(Userpage);
                 }else{
-                    alert("Hatalı Bilgiler");
+                    this.showAlert('Hata','Girdiğiniz bilgiler hatalıdır. Lütfen tekrar deneyiniz', 'Tamam');
                 }
             });
         }else{
-            alert("Lütfen alanları doldurun");
+            this.showAlert('Hata','Boş alan bırakamazsınız!', 'Tamam');
         }
     }
+
+    showAlert(aTitle, aDesc, aButton) {
+        let alert = this.alertCtrl.create({
+            title: aTitle,
+            subTitle: aDesc,
+            buttons: [aButton]
+        });
+        alert.present();
+    }
+
     //signup() {
     //    this.navCtrl.push(Signup);
     //}
