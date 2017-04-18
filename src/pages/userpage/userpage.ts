@@ -47,9 +47,6 @@ export class Userpage {
 
     ionViewDidLoad() {
       this.presentLoading();
-      
-      //this.chartGenerate();
-
     }
 
     presentLoading() {
@@ -62,7 +59,6 @@ export class Userpage {
 
     chartGenerate(ch){
 
-      console.log(ch.months);
       var months = {
         name: [],
         gider: [],
