@@ -4,10 +4,95 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>DashBoard</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="power"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <h2>Buradasın</h2>
+<ion-content id="mainarea" padding>
+    <h2>Hoşgeldin, {{ header_datas?.userinfo.name }}</h2>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header color="color5">
+              <ion-icon name="alarm"></ion-icon> Yıllık ({{ header_datas?.lastxprj }})
+            </ion-card-header>            
+            <ion-list >
+              <button color="color2" ion-item *ngFor="let item of header_datas?.lastxdays" (click)="loadPage(item?.id)">
+                {{ item?.name }} ({{ item?.kalan }} gün) - ({{ item?.renew_price }} TL)
+              </button>  
+            </ion-list>
+          </ion-card>
+        </ion-col>
+
+        <ion-col>
+
+          <ion-card>
+            <ion-card-header color="color5">
+              <ion-icon name="logo-tux"></ion-icon> Sunucu ({{ header_datas?.dropsize }})
+            </ion-card-header>
+            <ion-list>
+              <button color="color2" ion-item *ngFor="let item of header_datas?.dropletspay" (click)="loadPage(item?.id)">
+                {{ item?.project.name }} ({{ item?.kalan }} gün) - ({{ item?.price }} TL)
+              </button>  
+            </ion-list>
+          </ion-card>
+        </ion-col>
+
+        <ion-col>
+          <ion-card>
+            <ion-card-header color="color5">
+              <ion-icon name="alert"></ion-icon> Süresi Dolan ({{ header_datas?.lastoldxprj }})
+            </ion-card-header>
+            <ion-list>
+              <button color="color2" ion-item *ngFor="let item of header_datas?.oldyears" (click)="loadPage(item?.id)">
+                {{ item?.name }} ({{ item?.kalan }} gün) - ({{ item?.price }} TL)
+              </button>  
+            </ion-list>
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+     <ion-grid>
+      <ion-row>
+        <ion-col>
+          
+          <ion-item color="color4">
+            <ion-icon color="calm" name="logo-twitter" item-left></ion-icon>
+            Proje Sayısı: 
+            <ion-badge color="color5" item-right>{{ dashboard?.projesayisi }} Adet</ion-badge>
+          </ion-item>
+
+          <ion-item color="color4">
+            <ion-icon color="energized" name="people" item-left></ion-icon>
+            Müşteri Sayısı: 
+            <ion-badge color="color5" item-right>{{ dashboard?.musterisayisi }} Adet</ion-badge>
+          </ion-item>
+
+          <ion-item color="color4">
+            <ion-icon color="balanced" name="card" item-left></ion-icon>
+            Toplam Kazanç: 
+            <ion-badge color="color5" item-right>{{ dashboard?.gToplamGelir }} TL</ion-badge>
+          </ion-item>
+
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-card>
+      <ion-card-header color="calm">
+        <ion-icon name="stats"></ion-icon> Son 5 Ay
+      </ion-card-header>
+      <canvas #barCanvas></canvas>
+    </ion-card>
+
     <button ion-button (click) = "logout()">ÇIKIŞ YAP</button>
 </ion-content>
