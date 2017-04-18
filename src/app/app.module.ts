@@ -9,6 +9,9 @@ import { ListPage } from '../pages/list/list';
 import { Userpage } from '../pages/userpage/userpage';
 import { AuthService } from '../pages/home/authservice';
 import { PostService } from '../pages/home/postservice';
+import { Projects } from '../pages/projects/projects';
+import { Customers } from '../pages/customers/customers';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +21,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     ListPage,
-    Userpage
+    Userpage,
+    Projects,
+    Customers
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     ListPage,
-    Userpage
+    Userpage,
+    Projects,
+    Customers
   ],
   providers: [
     StatusBar,
