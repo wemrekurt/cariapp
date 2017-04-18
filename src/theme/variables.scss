@@ -24,13 +24,40 @@ $font-path: "../assets/fonts";
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  primary:  #F44336,
+  light:    #FAFAFA,
+  stable:   #F5F5F5,
+  positive: #3F51B5,
+  calm:     #2196F3,
+  balanced: #4CAF50,
+  energized:#FFC107,
+  assertive:#F44336,
+  royal:    #673AB7,
+  dark:     #212121,
+
+  color1: #B8D8D8,
+  color2: #7A9E9F,
+  color3: #4F6367,
+  color4: #EEF5DB,
+  color5: #FE5F55
+
 );
 
+#mainarea {
+  background: #B8D8D8;
+}
+
+
+/**
+* Bars
+*/
+$bar-android-height: 56px; // @TODO assign only to android
+$bar-subheader-height: 48px;
+$expanded-bar-height: ($bar-android-height + 72px);
+
+/**
+* Typography
+*/
 
 // App iOS Variables
 // --------------------------------------------------
@@ -76,3 +103,8 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+$preferred_font: 'Roboto', 'Helvetica', 'Arial', sans-serif !default;
+$performance_font: 'Helvetica', 'Arial', sans-serif !default;
+$roboto-font-path: '../fonts/roboto' !default;
+$material-icon-font-path: '../fonts/material-icons' !default;
