@@ -1,18 +1,26 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
+    
+    <ion-title>Global Cari v1.*</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <h3>Giriş Yap</h3>
 
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+    <ion-item>
+      <ion-label floating>E-posta</ion-label>
+      <ion-input [(ngModel)]="usercreds.name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Parola</ion-label>
+      <ion-input [(ngModel)]="usercreds.password" type="password"></ion-input>
+    </ion-item>
+    
+
   </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <button ion-button  (click)="login(usercreds)">GİRİŞ YAP</button>
 </ion-content>
