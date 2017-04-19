@@ -11,6 +11,7 @@ import { AuthService } from '../pages/home/authservice';
 import { PostService } from '../pages/home/postservice';
 import { Projects } from '../pages/projects/projects';
 import { Customers } from '../pages/customers/customers';
+import { Customerpage } from '../pages/customerpage/customerpage';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,7 +24,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListPage,
     Userpage,
     Projects,
-    Customers
+    Customers,
+    Customerpage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListPage,
     Userpage,
     Projects,
-    Customers
+    Customers,
+    Customerpage
   ],
   providers: [
     StatusBar,

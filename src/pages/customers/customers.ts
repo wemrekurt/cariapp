@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AuthService } from '../home/authservice';
 import { PostService } from '../home/postservice';
 import { HomePage } from '../home/home';
 import { Userpage } from '../userpage/userpage';
-
+import { Customerpage } from '../customerpage/customerpage';
 
 
 /**
@@ -56,11 +55,9 @@ export class Customers {
   ionViewDidLoad() {
   }
 
-  //TODO: id bilgisini gönder, customer.ts unutma
   loadPage(id){
-    this.navCtrl.push(Userpage,{
-            firstPassed: "value 1",
-            secondPassed: "value 2"
+    this.navCtrl.push(Customerpage,{
+            userId: id
           });
   }
 

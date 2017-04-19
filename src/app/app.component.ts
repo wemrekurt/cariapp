@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { Userpage } from '../pages/userpage/userpage';
 import { Projects } from '../pages/projects/projects';
 import { Customers } from '../pages/customers/customers';
+import { Customerpage } from '../pages/customerpage/customerpage';
 
 
 //import { LoginPage } from '../pages/login/login';

@@ -1,0 +1,50 @@
+<!--
+  Generated template for the Customerpage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ user?.title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content id="mainarea" padding>
+  <ion-card>
+
+    <ion-card-header color="color5">
+        <ion-icon name="contact"></ion-icon> {{ user?.musteri.name }}
+    </ion-card-header>
+
+    <ion-card-content id="card">
+      <!-- Add card content here! -->
+      
+      <ion-item color="color2">
+        <ion-icon color="color4" name="paper" item-left></ion-icon>
+        Firma: {{ user?.musteri.company }}
+      </ion-item>
+
+      <ion-item color="color2">
+        <ion-icon color="color4" name="home" item-left></ion-icon>
+        Adres: {{ user?.musteri.address }}
+      </ion-item>
+
+      <ion-item color="color2">
+        <ion-icon color="color4" name="phone-portrait" item-left></ion-icon>
+        Gsm: {{ user?.musteri.cphone }}
+      </ion-item>
+
+      <ion-item color="color2">
+        <ion-icon color="color4" name="call" item-left></ion-icon>
+        Telefon: {{ user?.musteri.phone }}
+      </ion-item>
+
+      <a ion-button href="tel:{{ user?.musteri.cphone }}" ><ion-icon name="call"></ion-icon>  Ara</a>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
