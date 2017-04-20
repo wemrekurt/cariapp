@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import {AuthService} from '../home/authservice';
 import {PostService} from '../home/postservice';
+import { Projectpage } from '../projectpage/projectpage';
+
 
 import {HomePage} from '../home/home';
 import { Chart } from 'chart.js';
@@ -52,9 +54,13 @@ export class Userpage {
     presentLoading() {
       let loader = this.loadingCtrl.create({
         content: "Lütfen Bekleyin...",
-        duration: 2000
+        duration: 1000
       });
       loader.present();
+    }
+
+    loadPage(id){
+      this.navCtrl.push(Projectpage,{ projectId: id });
     }
 
     chartGenerate(ch){

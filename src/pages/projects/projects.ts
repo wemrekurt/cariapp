@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { PostService } from '../home/postservice';
 import { HomePage } from '../home/home';
+import { Projectpage } from '../projectpage/projectpage';
 
 
 /**
@@ -53,11 +54,11 @@ export class Projects {
     }
   }
 
-  /*
+  
   loadPage(id){
     this.navCtrl.push(Projectpage,{ projectId: id });
   }
-  */
+  
 
   ionViewDidLoad() {
   }

@@ -9,6 +9,7 @@ import { Userpage } from '../pages/userpage/userpage';
 import { Projects } from '../pages/projects/projects';
 import { Customers } from '../pages/customers/customers';
 import { Customerpage } from '../pages/customerpage/customerpage';
+import { Projectpage } from '../pages/projectpage/projectpage';
 
 
 //import { LoginPage } from '../pages/login/login';
