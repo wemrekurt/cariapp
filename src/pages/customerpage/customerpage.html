@@ -47,4 +47,16 @@
     </ion-card-content>
 
   </ion-card>
+
+  <ion-card>
+    <ion-card-header id="sms-header">
+      <ion-icon name="chatbubbles"></ion-icon> Sms Gönder
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-textarea [(ngModel)]="messageText" placeholder="Mesaj Metni"></ion-textarea>
+    </ion-card-content>
+    <button ion-button color="positive" (click)="confirmSms(user?.musteri.cphone)" full>Gönder</button>
+  </ion-card>
+
 </ion-content>

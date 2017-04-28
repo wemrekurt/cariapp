@@ -32,7 +32,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, 
+      {
+        monthNames: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık' ],
+        monthShortNames: ['oca', 'şub', 'mar', 'nis', 'may', 'haz', 'tem', 'agu', 'eyl', 'eki', 'kas', 'ara' ],
+        dayNames: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma' ],
+        dayShortNames: ['paz', 'pzt', 'sal', 'çrş', 'prş', 'cum', 'cts' ],
+      }
+    ),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

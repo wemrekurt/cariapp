@@ -6,6 +6,10 @@ import {AuthService} from './authservice';
 import {Userpage} from '../userpage/userpage';
 //import {Signup} from '../signup/signup';
 
+
+declare var navigator: any;
+declare var Connection: any;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -52,6 +56,7 @@ export class HomePage {
         });
         alert.present();
     }
+
 
     //signup() {
     //    this.navCtrl.push(Signup);

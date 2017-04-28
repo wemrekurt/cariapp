@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ project?.title }}</ion-title>
+    <ion-title>{{ project?.title }} <ion-icon *ngIf="project?.project.statue == 'Pasif'" name="alert" color="primary"></ion-icon> </ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -111,16 +111,16 @@
     </div>
 
     <ion-row>
-
       <ion-col>          
           <ion-card>
             <ion-card-header id="money-header">
               <ion-icon name="cash"></ion-icon> Hesap Hareketleri
             </ion-card-header>            
-            <ion-list id="project-detail" *ngIf="project?.payments.length > 0">
-              <ion-item color="white" *ngFor="let payment of project?.payments">
-                <b>{{ payment?.name }}</b> {{ payment?.description  }} 
-                <ion-badge color="color5" item-right>{{ payment?.amount }} TL</ion-badge>
+            <ion-list id="project-detail" *ngIf="project?.payments">
+              <ion-item (click)="presentToast(payment?.description, payment?.trh)" color="white" *ngFor="let payment of project?.payments">
+                <b>{{ payment?.name }}</b>
+                <ion-badge *ngIf="payment?.gelirorgider==0" color="color5" item-right>{{ payment?.amount }} TL</ion-badge>
+                <ion-badge *ngIf="payment?.gelirorgider==1" color="balanced" item-right>{{ payment?.amount }} TL</ion-badge>
               </ion-item>  
             </ion-list>
           </ion-card>          
@@ -131,7 +131,7 @@
             <ion-card-header id="renew-header">
               <ion-icon name="cash"></ion-icon> Yıllık Ödemeler
             </ion-card-header>            
-            <ion-list id="project-detail" *ngIf="project?.renew_payments.length > 0">
+            <ion-list id="project-detail" *ngIf="project?.renew_payments">
               <ion-item color="white" *ngFor="let payment of project?.renew_payments">
                 {{ payment?.daty  }}
                 <ion-badge color="color5" item-right>{{ payment?.amount }} TL</ion-badge>
@@ -142,8 +142,72 @@
 
     </ion-row>
 
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-icon name="add-circle"></ion-icon> Cari Kaydı Ekle
+          </ion-card-header>
+          <ion-list>
+
+            <ion-item>
+              <ion-label color="primary" stacked>Başlık</ion-label>
+              <ion-input type="text" placeholder="Ödeme Başlık" [(ngModel)]="payTitle"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label color="primary" stacked>Açıklama</ion-label>
+              <ion-textarea [(ngModel)]="payDesc" placeholder="Ödeme Açıklaması"></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+              <ion-label color="primary" stacked>Ödenen Miktar</ion-label>
+              <ion-input type="number" placeholder="Ödeme Miktarı" [(ngModel)]="payAmount"></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label color="primary" stacked>Gelir/Gider</ion-label>
+              <ion-select [(ngModel)]="gelirgider">
+                <ion-option [value] = "1" [selected] = "true" > Gelir </ion-option>
+                <ion-option [value] = "0"  > Gider </ion-option>
+              </ion-select>
+            </ion-item>            
+
+            <ion-item>
+              <ion-label color="primary" stacked>Tarih</ion-label>
+              <ion-datetime  pickerFormat="DD MMMM YYYY" displayFormat="YYYY-MM-DD" [(ngModel)]="payDate" placeholder="YYYY-MM-DD"></ion-datetime>
+            </ion-item>
+
+            <button color="primary" (click)="addPayment(project?.project.id)" ion-button full>Ekle</button>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-icon name="add-circle"></ion-icon> Yıllık Ödeme Ekle
+          </ion-card-header>
+          <ion-list>
+            <ion-item>
+              <ion-label color="primary" stacked>Ödenen Miktar</ion-label>
+              <ion-input type="number" placeholder="Ödeme Miktarı" [(ngModel)]="renewAmount"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label color="primary" stacked>Tarih</ion-label>
+              <ion-datetime  pickerFormat="DD MMMM YYYY" displayFormat="YYYY-MM-DD" [(ngModel)]="renewDate" placeholder="YYYY-MM-DD"></ion-datetime>
+            </ion-item>
+
+            <button color="primary" (click)="addRenewPayment(project?.project.id)" ion-button full>Ekle</button>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+
+      
+    </ion-row>
+
   </ion-grid>
-
-  <p id="project-detail">Proje Adı: {{ project?.project.name  }}</p>
-
 </ion-content>
