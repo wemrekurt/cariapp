@@ -21,6 +21,8 @@
 
 <ion-content id="mainarea" padding>
 
+  <button ion-button color="secondary" block (click)="newCustomer()">Yeni Müşteri Ekle</button>
+
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <button ion-item *ngFor="let item of filtered_customers" (click)="loadPage(item?.id)">
