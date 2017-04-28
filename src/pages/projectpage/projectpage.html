@@ -14,7 +14,6 @@
 
 
 <ion-content id="mainarea" padding>
-
   <ion-grid>
 
     <ion-row>
@@ -73,7 +72,7 @@
     </ion-row>
 
 
-    <div *ngIf="project?.project.hosting">
+    <div *ngIf="project?.project.hosting && project?.account">
       <ion-row>
         <ion-col>          
           <ion-card>
@@ -108,7 +107,59 @@
           </ion-card>          
         </ion-col>
       </ion-row>
+
+
+       <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-icon name="add-circle"></ion-icon> E-posta Hesabı Ekle
+            </ion-card-header>
+            <ion-list>
+
+              <ion-item>
+                <ion-label color="primary" stacked>E-posta</ion-label>
+                <ion-input type="text" placeholder="E-posta Kullanıcı Adı" [(ngModel)]="mailUser"></ion-input>
+              </ion-item>
+
+
+              <ion-item>
+                <ion-label color="primary" stacked>Parola</ion-label>
+                <ion-input [(ngModel)]="mailPass" type="password" placeholder="E-posta Parola"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label color="primary" stacked>Parola Tekrar</ion-label>
+                <ion-input type="password" placeholder="E-posta Parola Tekrar" [(ngModel)]="mailPass2"></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label color="primary" stacked>Alan Adı</ion-label>
+                <ion-select [(ngModel)]="mailDomain">
+                    <ion-option *ngFor="let domain of project?.project.domainler" [value] = "domain" [selected] = "(project?.project.main_domain == domain)"> {{ domain }} </ion-option>
+                </ion-select>
+              </ion-item>            
+
+              <ion-item>
+                <ion-label color="primary" stacked>Kota</ion-label>
+                <ion-select [(ngModel)]="mailKota">
+                  <ion-option [value] = "50" [selected] = "true" > 50 MB </ion-option>
+                  <ion-option [value] = "100"> 100 MB </ion-option>
+                  <ion-option [value] = "150"> 150 MB </ion-option>
+                  <ion-option [value] = "200"> 200 MB </ion-option>
+                  <ion-option [value] = "250"> 250 MB </ion-option>                  
+                </ion-select>
+              </ion-item>   
+
+
+              <button color="primary" (click)="addEmail(project?.project.description.cpuser, project?.project.description.cpass)" ion-button full>Oluştur</button>
+            </ion-list>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
     </div>
+
 
     <ion-row>
       <ion-col>          

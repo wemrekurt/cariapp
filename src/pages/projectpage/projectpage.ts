@@ -28,6 +28,13 @@ export class Projectpage {
   public payTitle: String;
   public payDesc: String;
   public gelirgider: any = 1;
+
+  public mailUser: String = '';
+  public mailPass: String = '';
+  public mailPass2: String = '';
+  public mailDomain: any;
+  public mailKota: any = 50;
+
   
 
 
@@ -51,6 +58,7 @@ export class Projectpage {
         if(res){
           this.project = res['data'];
           this.package = res['data']['project']['hosting'];
+          this.mailDomain = res['data']['project']['main_domain'];
           loader.dismiss();
         }else{
           loader.dismiss();
@@ -141,6 +149,20 @@ export class Projectpage {
       this.payAmount='';    
     }else{
       this.showAlert('Ödeme Eklenemedi','Bir hata oluştu ve ödeme eklenemedi!');
+    }
+  }
+
+  addEmail(cpuser, cpass){
+    let params = "_token=epostaolustur&cpuser="+cpuser+"&cpass="+cpass+"&eposta="+this.mailUser+"&password="+this.mailPass+"&password2="+this.mailPass2+"&alanadi="+this.mailDomain+"&kota="+this.mailKota;
+    var create = this.postservice.postPage('projects', params);
+    if(create){   
+      this.presentToast('E-posta Oluşturuldu','E-posta Hesabı başarıyla oluşturuldu.');
+      this.mailUser = '';
+      this.mailPass = '';
+      this.mailPass2 = '';
+      this.mailKota = 50;
+    }else{
+      this.showAlert('E-posta Oluşturulamadı','Bir hata oluştu ve e-posta oluşturulamadı!');
     }
   }
 
