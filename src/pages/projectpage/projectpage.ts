@@ -216,7 +216,7 @@ export class Projectpage {
 
   sentInfo(c_id, project_id){
     if(this.notifications.length > 0){
-      let params = "_token=notify&cid="+1+"&project_id="+project_id;
+      let params = "_token=notify&cid="+c_id+"&project_id="+project_id;
       let arr = '';
       if(this.notifications.length > 1){
         arr = this.notifications.join('=true&');
