@@ -19,6 +19,12 @@ export class AuthService {
         
     }
     
+    storeUserInformation(id, name, email){
+        window.localStorage.setItem('user_id',id);
+        window.localStorage.setItem('user_name',name);
+        window.localStorage.setItem('user_email',email);        
+    }
+    
     useCredentials(token) {
         this.isLoggedin = true;
         this.AuthToken = token;
@@ -45,6 +51,7 @@ export class AuthService {
             this.http.post('http://localhost/bgp/api/login.json', creds, {headers: headers}).subscribe(data => {
                 if(data.json().response == 'success'){
                     this.storeUserCredentials(data.json().token);
+                    this.storeUserInformation(data.json().user_id, data.json().name, user.name);
                     resolve(true);
                 }
                 else
