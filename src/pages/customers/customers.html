@@ -9,10 +9,11 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Müşteriler</ion-title>
+   
+    <ion-searchbar placeholder="Ara" (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel"></ion-searchbar>
     <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="power"></ion-icon>
+      <button (click)="newCustomer()" ion-button icon-only>
+        <ion-icon name="add" ></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -20,12 +21,8 @@
 
 
 <ion-content id="mainarea" padding>
-
-  <button ion-button color="secondary" block (click)="newCustomer()">Yeni Müşteri Ekle</button>
-
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <button ion-item *ngFor="let item of filtered_customers" (click)="loadPage(item?.id)">
+    <button id="small-font" ion-item *ngFor="let item of filtered_customers" (click)="loadPage(item?.id)">
       {{ item?.name }} ({{ item?.company }}) - ({{ item?.cphone }})
     </button>  
   </ion-list>
