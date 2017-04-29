@@ -35,6 +35,9 @@ export class Projectpage {
   public mailDomain: any;
   public mailKota: any = 50;
 
+  public todoText: String = '';
+  public todoDate: String = new Date().toISOString();
+
   
 
 
@@ -153,16 +156,37 @@ export class Projectpage {
   }
 
   addEmail(cpuser, cpass){
-    let params = "_token=epostaolustur&cpuser="+cpuser+"&cpass="+cpass+"&eposta="+this.mailUser+"&password="+this.mailPass+"&password2="+this.mailPass2+"&alanadi="+this.mailDomain+"&kota="+this.mailKota;
-    var create = this.postservice.postPage('projects', params);
-    if(create){   
-      this.presentToast('E-posta Oluşturuldu','E-posta Hesabı başarıyla oluşturuldu.');
-      this.mailUser = '';
-      this.mailPass = '';
-      this.mailPass2 = '';
-      this.mailKota = 50;
+    if(this.mailUser && this.mailPass && this.mailPass2 && (this.mailPass == this.mailPass2) && this.mailKota){
+      let params = "_token=epostaolustur&cpuser="+cpuser+"&cpass="+cpass+"&eposta="+this.mailUser+"&password="+this.mailPass+"&password2="+this.mailPass2+"&alanadi="+this.mailDomain+"&kota="+this.mailKota;
+      var create = this.postservice.postPage('projects', params);
+      if(create){   
+        this.presentToast('E-posta Oluşturuldu','');
+        this.mailUser = '';
+        this.mailPass = '';
+        this.mailPass2 = '';
+        this.mailKota = 50;
+      }else{
+        this.showAlert('HATA!','Bir hata oluştu ve e-posta oluşturulamadı!');
+      }
     }else{
-      this.showAlert('E-posta Oluşturulamadı','Bir hata oluştu ve e-posta oluşturulamadı!');
+      this.showAlert('HATA!','Alanlar boş bırakılamaz ve parolalar eşit olmalıdır!');
+    }
+  }
+
+  addTodo(project_id){
+    if(this.todoText && this.todoDate){
+      let user_id = window.localStorage.getItem('user_id');
+      let params = "_token=addtodo&user_id="+user_id+"&project_id="+project_id+"&text="+this.todoText+"&to_date="+this.todoDate;
+      let create = this.postservice.postPage('projects',params);
+      if(create){
+        this.presentToast('To-Do Oluşturuldu','');
+        this.todoText = '';
+        this.todoDate = new Date().toISOString();
+      }else{
+        this.showAlert('HATA!','Bir hata oluştu ve to-do oluşturulamadı!');
+      }
+    }else{
+      this.showAlert('HATA!','TO-DO alanları boş bırakılamaz!');
     }
   }
 
@@ -171,7 +195,7 @@ export class Projectpage {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: message,
-      buttons: ['OK']
+      buttons: ['Tamam']
     });
     alert.present();
   }
