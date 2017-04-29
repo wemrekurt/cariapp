@@ -23,7 +23,7 @@
               <ion-icon name="alarm"></ion-icon> Yıllık ({{ header_datas?.lastxprj }})
             </ion-card-header>            
             <ion-list >
-              <button color="color2" ion-item *ngFor="let item of header_datas?.lastxdays" (click)="loadPage(item?.id)">
+              <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.lastxdays" (click)="loadPage(item?.id)">
                 {{ item?.name }} ({{ item?.kalan }} gün) - ({{ item?.renew_price }} TL)
               </button>  
             </ion-list>
@@ -37,7 +37,7 @@
               <ion-icon name="logo-tux"></ion-icon> Sunucu ({{ header_datas?.dropsize }})
             </ion-card-header>
             <ion-list>
-              <button color="color2" ion-item *ngFor="let item of header_datas?.dropletspay" (click)="loadPage(item?.id)">
+              <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.dropletspay" (click)="loadPage(item?.id)">
                 {{ item?.project.name }} ({{ item?.kalan }} gün) - ({{ item?.price }} TL)
               </button>  
             </ion-list>
@@ -50,7 +50,7 @@
               <ion-icon name="alert"></ion-icon> Süresi Dolan ({{ header_datas?.lastoldxprj }})
             </ion-card-header>
             <ion-list>
-              <button color="color2" ion-item *ngFor="let item of header_datas?.oldyears" (click)="loadPage(item?.id)">
+              <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.oldyears" (click)="loadPage(item?.id)">
                 {{ item?.name }} ({{ item?.kalan }} gün) - ({{ item?.price }} TL)
               </button>  
             </ion-list>
@@ -66,19 +66,19 @@
           
           <ion-item>
             <ion-icon color="calm" name="logo-twitter" item-left></ion-icon>
-            Proje Sayısı: 
+            <p id="small-font">Proje Sayısı: </p>
             <ion-badge color="color5" item-right>{{ dashboard?.projesayisi }} Adet</ion-badge>
           </ion-item>
 
           <ion-item>
             <ion-icon color="energized" name="people" item-left></ion-icon>
-            Müşteri Sayısı: 
+            <p id="small-font">Müşteri Sayısı: </p>
             <ion-badge color="color5" item-right>{{ dashboard?.musterisayisi }} Adet</ion-badge>
           </ion-item>
 
           <ion-item>
             <ion-icon color="balanced" name="card" item-left></ion-icon>
-            Toplam Kazanç: 
+            <p id="small-font">Toplam Kazanç: </p>
             <ion-badge color="color5" item-right>{{ dashboard?.gToplamGelir }} TL</ion-badge>
           </ion-item>
 
