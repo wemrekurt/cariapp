@@ -38,6 +38,8 @@ export class Projectpage {
   public todoText: String = '';
   public todoDate: String = new Date().toISOString();
 
+  public notifications: any = [];
+
   
 
 
@@ -187,6 +189,49 @@ export class Projectpage {
       }
     }else{
       this.showAlert('HATA!','TO-DO alanları boş bırakılamaz!');
+    }
+  }
+
+  sendInformations(c_id, project_id){
+    let confirm = this.alertCtrl.create({
+      title: 'Bildirim Gönder',
+      message: 'Bildirimler gönderilecektir, Onaylıyor musunuz?',
+      buttons: [
+        {
+          text: 'İptal',
+          handler: () => {
+            //ONAYLANMADI
+          }
+        },
+        {
+          text: 'Onaylıyorum',
+          handler: () => {
+            this.sentInfo(c_id, project_id);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  sentInfo(c_id, project_id){
+    if(this.notifications.length > 0){
+      let params = "_token=notify&cid="+1+"&project_id="+project_id;
+      let arr = '';
+      if(this.notifications.length > 1){
+        arr = this.notifications.join('=true&');
+      }else{
+        arr = this.notifications[0];
+      }
+      params = params + "&" + arr + "=true";
+      let send = this.postservice.postPage('projects',params);
+      if(send){
+        this.showAlert('Harika!','Tüm bildirimler adrese ulaştı!');
+      }else{
+        this.showAlert('HATA!','Bir hatadan dolayı bildirim gönderilemedi!');
+      }
+    }else{
+      this.showAlert('HATA!','Ne yapmaya çalışıyorsun? Bildirim seçmeden göndermek!');
     }
   }
 

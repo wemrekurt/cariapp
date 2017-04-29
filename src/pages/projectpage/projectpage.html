@@ -61,13 +61,35 @@
           </ion-card-header>            
           <ion-list id="project-detail">
             <ion-item *ngIf="project?.project.description.yonetimpanel" color="light" ><b>Yönetim Paneli:</b> {{ project?.project.description.yonetimpanel }} </ion-item>  
-            <ion-item color="white" ><b>Yönetim Username:</b> {{ project?.project.description.yonetimuser }} </ion-item>  
-            <ion-item color="light" ><b>Yönetim Parola:</b> {{ project?.project.description.yonetimpass }} </ion-item>  
+            <ion-item *ngIf="project?.project.description.yonetimuser" color="white" ><b>Yönetim Username:</b> {{ project?.project.description.yonetimuser }} </ion-item>  
+            <ion-item *ngIf="project?.project.description.yonetimpass" color="light" ><b>Yönetim Parola:</b> {{ project?.project.description.yonetimpass }} </ion-item>  
             <ion-item color="white" ><b>cPanel Username:</b> {{ project?.project.description.cpuser }} </ion-item>  
             <ion-item color="light" ><b>cPanel Parola:</b> {{ project?.project.description.cpass }} </ion-item>
           </ion-list>
         </ion-card>
       </ion-col>
+
+      <ion-col>
+        <ion-card>
+          <ion-card-header id="card-header">
+            <ion-icon name="notifications"></ion-icon> Bildirim Gönder
+          </ion-card-header>            
+          <ion-list id="project-detail">
+            <ion-item>
+              <ion-label>Bildirim:</ion-label>
+              <ion-select [(ngModel)]="notifications" multiple="true" cancelText="İptal" okText="Tamam!">
+                <ion-option *ngIf="project?.project.description.yonetimuser && project?.project.description.yonetimpass" value="eYonetim">Yönetim E-posta</ion-option>
+                <ion-option *ngIf="project?.project.description.yonetimuser && project?.project.description.yonetimpass" value="sYonetim">Yönetim Sms</ion-option>
+                <ion-option *ngIf="project?.project.description.cpuser && project?.project.description.cpass" value="ecPanel">cPanel E-posta</ion-option>
+                <ion-option *ngIf="project?.project.description.cpuser && project?.project.description.cpass" value="scPanel">cPanel Sms</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <button color="royal" (click)="sendInformations(project?.project.customer_id.id, project?.project.id)" ion-button full>Gönder</button>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+      </ion-col>      
 
     </ion-row>
 
