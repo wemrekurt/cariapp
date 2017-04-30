@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController, LoadingController } from 'ionic-angular';
 import { PostService } from '../home/postservice';
 import { HomePage } from '../home/home';
 
@@ -25,12 +25,24 @@ export class Customerpage {
     public navParams: NavParams, 
     public postservice: PostService,
     public alertCtrl: AlertController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public loadingCtrl: LoadingController
   ) {
     this.userId = navParams.get("userId");
     if(window.localStorage.getItem('globalmedia')) {
-      this.postservice.getPage('customer/'+this.userId).then(res => { 
-        this.user = res['data']; 
+      let loader = this.loadingCtrl.create({
+        content: "Veriler Getiriliyor. Lütfen bekleyin."
+      });
+      loader.present();
+      this.postservice.getPage('customer/'+this.userId).then(res => {
+        if(res){ 
+          this.user = res['data']; 
+          loader.dismiss();
+        }else{
+          loader.dismiss();
+          this.showAlert('HATA!','Veriler Getirilemedi');
+          this.navCtrl.setRoot(HomePage);        
+        }
       });
     }else{
       this.navCtrl.setRoot(HomePage);

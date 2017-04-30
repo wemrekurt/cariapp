@@ -26,14 +26,39 @@ export class Userpage {
   @ViewChild('barCanvas') barCanvas;
   barChart: any;
 
-  constructor(public navCtrl: NavController, public authservice: AuthService, public postservice: PostService, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController, 
+    public authservice: AuthService, 
+    public postservice: PostService, 
+    public alertCtrl: AlertController, 
+    public loadingCtrl: LoadingController
+  ) {
     
     if(window.localStorage.getItem('globalmedia')) {
-      this.postservice.getPage('header_datas').then(res => { this.header_datas = res['data']; });
-      this.postservice.getPage('index').then(res => { 
-        this.dashboard = res['data']; 
-        this.chartGenerate(res['data']);
+      let success = [0,0];
+      let loader = this.loadingCtrl.create({
+        content: "Veriler Getiriliyor. Lütfen bekleyin."
       });
+      loader.present();
+
+      this.postservice.getPage('header_datas').then(res => { 
+          this.header_datas = res['data'];
+      });
+
+      
+      this.postservice.getPage('index').then(res => { 
+        if(res){
+          this.dashboard = res['data']; 
+          this.chartGenerate(res['data']);
+          loader.dismiss();
+        }else{
+          loader.dismiss();
+          this.showAlert('HATA!','Index Verileri Getirilemedi');
+        //this.navCtrl.setRoot(HomePage); // TODO: Connection Lost or error page redirect   
+          
+        }
+      });
+
       
     }else{
       this.navCtrl.setRoot(HomePage);
@@ -48,16 +73,9 @@ export class Userpage {
     
 
     ionViewDidLoad() {
-      this.presentLoading();
     }
 
-    presentLoading() {
-      let loader = this.loadingCtrl.create({
-        content: "Lütfen Bekleyin...",
-        duration: 1000
-      });
-      loader.present();
-    }
+
 
     loadPage(id){
       this.navCtrl.push(Projectpage,{ projectId: id });
@@ -110,4 +128,12 @@ export class Userpage {
             
     }
 
+    showAlert(title, message) {
+      let alert = this.alertCtrl.create({
+        title: title,
+        subTitle: message,
+        buttons: ['OK']
+      });
+      alert.present();
+    }
 }

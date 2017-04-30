@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { PostService } from '../home/postservice';
 import { HomePage } from '../home/home';
-import { Userpage } from '../userpage/userpage';
 import { Customerpage } from '../customerpage/customerpage';
 
 
@@ -23,7 +22,12 @@ export class Customers {
   public new_customer: any = {name: '', company: '', cphone: '', phone: '', address: '', email: ''};
   searchQuery: string = '';
 
-  constructor(public navCtrl: NavController, public postservice: PostService, public alertCtrl: AlertController) {
+  constructor(
+    public navCtrl: NavController, 
+    public postservice: PostService, 
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController
+  ) {
     if(window.localStorage.getItem('globalmedia')) {
       this.getCustomers();
     }else{
@@ -32,18 +36,28 @@ export class Customers {
   }
 
   getCustomers(){
-      this.postservice.getPage('customers').then(res => { 
+    let loader = this.loadingCtrl.create({
+      content: "Veriler Getiriliyor. Lütfen bekleyin."
+    });
+    loader.present();
+    this.postservice.getPage('customers').then(res => {
+      if(res){ 
         this.all_customers = res['data']['musteriler']; 
         this.filtered_customers = res['data']['musteriler']; 
-      });
+        loader.dismiss();
+      }else{
+        loader.dismiss();
+        this.showAlert('HATA!','Veriler Getirilemedi');
+        this.navCtrl.setRoot(HomePage);        
+      }
+    });
   }
 
   initializeItems(){
     this.filtered_customers = this.all_customers;
   }
 
-  getItems(ev: any) {
-    
+  getItems(ev: any) {    
     this.initializeItems();
 
     // set val to the value of the searchbar

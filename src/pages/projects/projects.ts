@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { PostService } from '../home/postservice';
 import { HomePage } from '../home/home';
 import { Projectpage } from '../projectpage/projectpage';
@@ -22,12 +22,27 @@ export class Projects {
   public filtered_projects: any;
   searchQuery: string = '';
 
-  constructor(public navCtrl: NavController, public postservice: PostService) {
-
+  constructor(
+    public navCtrl: NavController, 
+    public postservice: PostService,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController
+  ) {
     if(window.localStorage.getItem('globalmedia')) {
-      this.postservice.getPage('projects').then(res => { 
-        this.all_projects = res['data']['projects']; 
-        this.filtered_projects = res['data']['projects']; 
+      let loader = this.loadingCtrl.create({
+        content: "Veriler Getiriliyor. Lütfen bekleyin."
+      });
+      loader.present();
+      this.postservice.getPage('projects').then(res => {
+        if(res){ 
+          this.all_projects = res['data']['projects']; 
+          this.filtered_projects = res['data']['projects']; 
+          loader.dismiss();
+        }else{
+          loader.dismiss();
+          this.showAlert('HATA!','Veriler Getirilemedi');
+          this.navCtrl.setRoot(HomePage);        
+        }
       });
     }else{
       this.navCtrl.setRoot(HomePage);
@@ -57,6 +72,15 @@ export class Projects {
   
   loadPage(id){
     this.navCtrl.push(Projectpage,{ projectId: id });
+  }
+
+  showAlert(title, message) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
   }
   
 
