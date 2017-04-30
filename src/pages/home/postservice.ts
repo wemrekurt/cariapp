@@ -7,7 +7,7 @@ import 'rxjs/add/operator/timeout';
 @Injectable()
 export class PostService {
 
-    public url: string = 'http://www.localhost/bgp/api/';
+    public url: string = 'http://www.globalcari.com/api/';
 
     constructor(public http: Http, public authservice: AuthService) {
         this.http = http;

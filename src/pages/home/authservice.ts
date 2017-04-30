@@ -3,7 +3,7 @@ import {Http, Headers} from '@angular/http';
 
 @Injectable()
 export class AuthService {
-    
+    url: String= 'http://www.globalcari.com/api/';
     isLoggedin: boolean;
     AuthToken;
     
@@ -48,7 +48,7 @@ export class AuthService {
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         
         return new Promise(resolve => {
-            this.http.post('http://localhost/bgp/api/login.json', creds, {headers: headers}).subscribe(data => {
+            this.http.post(this.url + 'login.json', creds, {headers: headers}).subscribe(data => {
                 if(data.json().response == 'success'){
                     this.storeUserCredentials(data.json().token);
                     this.storeUserInformation(data.json().user_id, data.json().name, user.name);
@@ -66,7 +66,7 @@ export class AuthService {
             var headers = new Headers();
             this.loadUserCredentials();
             headers.append('Authorization', 'Bearer: ' +this.AuthToken);
-            this.http.get('http://localhost/bgp/api/checklogin.json', {headers: headers}).subscribe(data => {
+            this.http.get(this.url+'checklogin.json', {headers: headers}).subscribe(data => {
                 if(data.json().response == 'success'){
                     resolve(true);                    
                 }else{

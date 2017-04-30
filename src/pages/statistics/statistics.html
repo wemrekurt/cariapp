@@ -1,0 +1,111 @@
+<!--
+  Generated template for the Statistics page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>İstatistikler</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="power"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>Genel İstatistikler</ion-list-header>
+    <ion-item>
+      <ion-icon name="help-buoy" color="royal" item-left></ion-icon>
+      <h2>{{statistics?.alacak}} TL</h2>
+      <p>Toplam Alacak</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="add-circle" color="balanced" item-left></ion-icon>
+      <h2>{{statistics?.alinan}} TL</h2>
+      <p>Toplam Alınan</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" color="assertive" item-left></ion-icon>
+      <h2>{{statistics?.eksi}} TL</h2>
+      <p>Toplam Harcanan</p>
+    </ion-item>
+
+     <ion-item>
+      <ion-icon name="checkmark-circle" color="energized" item-left></ion-icon>
+      <h2>{{statistics?.alinan - statistics?.eksi}} TL</h2>
+      <p>Elde Edilen Net Kar</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-card>
+    <ion-card-header id="chart-header">
+      Bu Ay
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header id="money-header">
+      <ion-icon name="cash"></ion-icon> Bu Ay Alınan Ödemeler
+    </ion-card-header>
+    <ion-list id="project-detail" *ngIf="statistics?.buaydetay">
+      <ion-item color="white" *ngFor="let payment of statistics?.buaydetay">
+        <p id="xsmall-font">{{ payment?.proje  }} ({{ payment?.tarih  }})</p>
+        <ion-badge color="color5" item-right>{{ payment?.amount }} TL</ion-badge>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header id="renew-header">
+      <ion-icon name="cash"></ion-icon> Bu Ay Alınan Yıllık Ödemeler
+    </ion-card-header>
+    <ion-list id="project-detail" *ngIf="statistics?.buayyillik">
+      <ion-item color="white" *ngFor="let payment of statistics?.buayyillik">
+        <p id="xsmall-font">{{ payment?.proje  }} ({{ payment?.tarih  }})</p>
+        <ion-badge color="color5" item-right>{{ payment?.amount }} TL</ion-badge>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header>Alacaklar</ion-list-header>
+    <ion-item-sliding *ngFor="let project of statistics?.money">
+      <ion-item >
+        <h2>{{project?.name}}</h2>
+        <p>Proje Ücreti: {{project?.amount}} | Alınan: {{project?.amount - project?.kalan}} | Kalan: <b>{{project?.kalan}}</b></p>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button (click)="loadProject(project?.id)" color="light" icon-left>
+          <ion-icon name="ios-more"></ion-icon>
+          Proje
+        </button>
+        <button ion-button (click)="loadCustomer(project?.customer_id)" color="calm" icon-left>
+          <ion-icon name="text"></ion-icon>
+          Sms
+        </button>
+        <button ion-button (click)="callIt('tel:'+project?.customer.cphone)" color="secondary" icon-left>
+          <ion-icon name="call"></ion-icon>
+          Ara
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

@@ -4,12 +4,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { Userpage } from '../pages/userpage/userpage';
 import { Projects } from '../pages/projects/projects';
 import { Customers } from '../pages/customers/customers';
-import { Customerpage } from '../pages/customerpage/customerpage';
-import { Projectpage } from '../pages/projectpage/projectpage';
+import { Statistics } from '../pages/statistics/statistics';
 
 
 //import { LoginPage } from '../pages/login/login';
@@ -32,7 +30,8 @@ export class MyApp {
     this.pages = [
       { title: 'Dashboard', component: Userpage },
       { title: 'Müşteriler', component: Customers},
-      { title: 'Projeler', component: Projects }
+      { title: 'Projeler', component: Projects },
+      { title: 'İstatistikler', component: Statistics }
     ];
 
   }
