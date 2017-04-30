@@ -37,8 +37,8 @@
               <ion-icon name="logo-tux"></ion-icon> Sunucu ({{ header_datas?.dropsize }})
             </ion-card-header>
             <ion-list>
-              <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.dropletspay" (click)="loadPage(item?.id)">
-                {{ item?.project.name }} ({{ item?.kalan }} gün) - ({{ item?.price }} TL)
+              <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.dropletspay">
+                {{ item?.project.name }} ({{ item?.kalan }} gün) - ({{ item?.amount }} $)
               </button>  
             </ion-list>
           </ion-card>
