@@ -16,204 +16,173 @@
 <ion-content id="mainarea" padding>
   <ion-grid>
 
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header color="color5">
-            <ion-icon name="barcode"></ion-icon> Proje Bilgileri
-          </ion-card-header>            
-          <ion-list id="project-detail">
-            <ion-item color="color2" ><b>Proje Adı:</b> {{ project?.project.name }} </ion-item>  
-            <ion-item color="color6" ><b>Türü:</b> {{ project?.project.type.name }} </ion-item>  
-            <ion-item color="color2" ><b>Ana Alan Adı:</b> {{ project?.project.main_domain }} </ion-item>  
-            <ion-item color="color6" ><b>Fiyatı:</b> {{ project?.project.price }} </ion-item>  
-            <ion-item color="color2" ><b>Müşteri:</b> {{ project?.project.customer_id.name }} </ion-item>              
-            <ion-item color="color6" ><b>Başlangıç Tarihi:</b> {{ project?.project.start_date }} </ion-item> 
-            <ion-item color="color2" ><b>Durum:</b> {{ project?.project.statue }} </ion-item>              
-            <ion-item color="color6" ><b>Yenileme Tarihi:</b> {{ project?.project.renew_date }} </ion-item> 
-            <ion-item color="color2" ><b>Yenileme Ücreti:</b> {{ project?.project.renew_price }} TL </ion-item>              
-            <ion-item color="color6" ><b>Kalan Süre:</b> {{ project?.project.kalansure }} Gün </ion-item> 
-            <ion-item color="color2" ><b>Proje Sorumlusu:</b> {{ project?.project.responsible_user.name }} </ion-item> 
-          </ion-list>
-        </ion-card>
-      </ion-col>
+    <ion-card>
+      <ion-card-header color="color5">
+        <ion-icon name="barcode"></ion-icon> Proje Bilgileri
+      </ion-card-header>            
+      <ion-list id="project-detail">
+        <ion-item color="color2" ><b>Proje Adı:</b> {{ project?.project.name }} </ion-item>  
+        <ion-item color="color6" ><b>Türü:</b> {{ project?.project.type.name }} </ion-item>  
+        <ion-item color="color2" ><b>Ana Alan Adı:</b> {{ project?.project.main_domain }} </ion-item>  
+        <ion-item color="color6" ><b>Fiyatı:</b> {{ project?.project.price }} </ion-item>  
+        <ion-item color="color2" ><b>Müşteri:</b> {{ project?.project.customer_id.name }} </ion-item>              
+        <ion-item color="color6" ><b>Başlangıç Tarihi:</b> {{ project?.project.start_date }} </ion-item> 
+        <ion-item color="color2" ><b>Durum:</b> {{ project?.project.statue }} </ion-item>              
+        <ion-item color="color6" ><b>Yenileme Tarihi:</b> {{ project?.project.renew_date }} </ion-item> 
+        <ion-item color="color2" ><b>Yenileme Ücreti:</b> {{ project?.project.renew_price }} TL </ion-item>              
+        <ion-item color="color6" ><b>Kalan Süre:</b> {{ project?.project.kalansure }} Gün </ion-item> 
+        <ion-item color="color2" ><b>Proje Sorumlusu:</b> {{ project?.project.responsible_user.name }} </ion-item> 
+      </ion-list>
+    </ion-card>
 
-      <ion-col>
-        <ion-card>
-          <ion-card-header id="description_header">
-            <ion-icon name="book"></ion-icon> Proje Açıklaması
-          </ion-card-header>            
-          <p id="padder" [innerHtml]="project?.project.description.description"></p>
-          <hr />
-          <p id="padder"><b>Alan Adları:</b> {{ project?.project.domains }} </p>
-          <div *ngIf="project?.lisans">
-            <hr />
-            <p id="padder"><b>Lisans:</b> {{ project?.lisans.lisans }} </p>
+    <ion-card>
+      <ion-card-header id="description_header">
+        <ion-icon name="book"></ion-icon> Proje Açıklaması
+      </ion-card-header>            
+      <p id="padder" [innerHtml]="project?.project.description.description"></p>
+      <hr />
+      <p id="padder"><b>Alan Adları:</b> {{ project?.project.domains }} </p>
+      <div *ngIf="project?.lisans">
+        <hr />
+        <p id="padder"><b>Lisans:</b> {{ project?.lisans.lisans }} </p>
 
-          </div>
-        </ion-card>
-      </ion-col>
+      </div>
+    </ion-card>
 
-      <ion-col>
-        <ion-card>
-          <ion-card-header id="card-header">
-            <ion-icon name="settings"></ion-icon> cPanel ve Yönetim Paneli
-          </ion-card-header>            
-          <ion-list id="project-detail">
-            <ion-item *ngIf="project?.project.description.yonetimpanel" color="light" ><b>Yönetim Paneli:</b> {{ project?.project.description.yonetimpanel }} </ion-item>  
-            <ion-item *ngIf="project?.project.description.yonetimuser" color="white" ><b>Yönetim Username:</b> {{ project?.project.description.yonetimuser }} </ion-item>  
-            <ion-item *ngIf="project?.project.description.yonetimpass" color="light" ><b>Yönetim Parola:</b> {{ project?.project.description.yonetimpass }} </ion-item>  
-            <ion-item color="white" ><b>cPanel Username:</b> {{ project?.project.description.cpuser }} </ion-item>  
-            <ion-item color="light" ><b>cPanel Parola:</b> {{ project?.project.description.cpass }} </ion-item>
-          </ion-list>
-        </ion-card>
-      </ion-col>
+    <ion-card>
+      <ion-card-header id="card-header">
+        <ion-icon name="settings"></ion-icon> cPanel ve Yönetim Paneli
+      </ion-card-header>            
+      <ion-list id="project-detail">
+        <ion-item *ngIf="project?.project.description.yonetimpanel" color="light" ><b>Yönetim Paneli:</b> {{ project?.project.description.yonetimpanel }} </ion-item>  
+        <ion-item *ngIf="project?.project.description.yonetimuser" color="white" ><b>Yönetim Username:</b> {{ project?.project.description.yonetimuser }} </ion-item>  
+        <ion-item *ngIf="project?.project.description.yonetimpass" color="light" ><b>Yönetim Parola:</b> {{ project?.project.description.yonetimpass }} </ion-item>  
+        <ion-item color="white" ><b>cPanel Username:</b> {{ project?.project.description.cpuser }} </ion-item>  
+        <ion-item color="light" ><b>cPanel Parola:</b> {{ project?.project.description.cpass }} </ion-item>
+      </ion-list>
+    </ion-card>
 
-      <ion-col>
-        <ion-card>
-          <ion-card-header id="card-header">
-            <ion-icon name="notifications"></ion-icon> Bildirim Gönder
-          </ion-card-header>            
-          <ion-list id="project-detail">
-            <ion-item>
-              <ion-label>Bildirim:</ion-label>
-              <ion-select [(ngModel)]="notifications" multiple="true" cancelText="İptal" okText="Tamam!">
-                <ion-option *ngIf="project?.project.description.yonetimuser && project?.project.description.yonetimpass" value="eYonetim">Yönetim E-posta</ion-option>
-                <ion-option *ngIf="project?.project.description.yonetimuser && project?.project.description.yonetimpass" value="sYonetim">Yönetim Sms</ion-option>
-                <ion-option *ngIf="project?.project.description.cpuser && project?.project.description.cpass" value="ecPanel">cPanel E-posta</ion-option>
-                <ion-option *ngIf="project?.project.description.cpuser && project?.project.description.cpass" value="scPanel">cPanel Sms</ion-option>
-              </ion-select>
-            </ion-item>
-            <ion-item>
-              <button color="royal" (click)="sendInformations(project?.project.customer_id.id, project?.project.id)" ion-button full>Gönder</button>
-            </ion-item>
-          </ion-list>
-        </ion-card>
-      </ion-col>      
-
-    </ion-row>
+    <ion-card>
+      <ion-card-header id="card-header">
+        <ion-icon name="notifications"></ion-icon> Bildirim Gönder
+      </ion-card-header>            
+      <ion-list id="project-detail">
+        <ion-item>
+          <ion-label>Bildirim:</ion-label>
+          <ion-select [(ngModel)]="notifications" multiple="true" cancelText="İptal" okText="Tamam!">
+            <ion-option *ngIf="project?.project.description.yonetimuser && project?.project.description.yonetimpass" value="eYonetim">Yönetim E-posta</ion-option>
+            <ion-option *ngIf="project?.project.description.yonetimuser && project?.project.description.yonetimpass" value="sYonetim">Yönetim Sms</ion-option>
+            <ion-option *ngIf="project?.project.description.cpuser && project?.project.description.cpass" value="ecPanel">cPanel E-posta</ion-option>
+            <ion-option *ngIf="project?.project.description.cpuser && project?.project.description.cpass" value="scPanel">cPanel Sms</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <button color="royal" (click)="sendInformations(project?.project.customer_id.id, project?.project.id)" ion-button full>Gönder</button>
+        </ion-item>
+      </ion-list>
+    </ion-card>
 
 
     <div *ngIf="project?.project.hosting && project?.account">
-      <ion-row>
-        <ion-col>          
-          <ion-card>
-            <ion-card-header id="host-header">
-              <ion-icon name="logo-tux"></ion-icon> Hosting Bilgileri
-            </ion-card-header>            
-            <ion-list id="project-detail" *ngIf="project?.hosting">
-              <ion-item color="white" ><b>Paket Adı:</b> {{ project?.hosting.name  }} </ion-item>  
-              <ion-item color="light" ><b>Trafik:</b> {{ project?.hosting.BWLIMIT  }} mb/Ay </ion-item>  
-              <ion-item color="white" ><b>Kota:</b> {{ project?.hosting.QUOTA  }} mb </ion-item>  
-              <ion-item color="light" ><b>E-posta:</b> {{ project?.hosting.MAXPOP  }} Adet </ion-item>
-            </ion-list>
-          </ion-card>          
-        </ion-col>
+      <ion-card>
+        <ion-card-header id="host-header">
+          <ion-icon name="logo-tux"></ion-icon> Hosting Bilgileri
+        </ion-card-header>            
+        <ion-list id="project-detail" *ngIf="project?.hosting">
+          <ion-item color="white" ><b>Paket Adı:</b> {{ project?.hosting.name  }} </ion-item>  
+          <ion-item color="light" ><b>Trafik:</b> {{ project?.hosting.BWLIMIT  }} mb/Ay </ion-item>  
+          <ion-item color="white" ><b>Kota:</b> {{ project?.hosting.QUOTA  }} mb </ion-item>  
+          <ion-item color="light" ><b>E-posta:</b> {{ project?.hosting.MAXPOP  }} Adet </ion-item>
+        </ion-list>
+      </ion-card>
 
-        <ion-col>          
-          <ion-card>
-            <ion-card-header id="money-header">
-              <ion-icon name="cash"></ion-icon> Paket Güncelle
-            </ion-card-header>            
-            <ion-list id="project-detail" *ngIf="project?.hosting">
-              <ion-item>
-                <ion-label>Paket</ion-label>
-                <ion-select [(ngModel)]="package">
-                  <ion-option *ngFor="let paket of project?.paketler" [value] = "paket?.name" [selected] = "(paket?.name == project?.hosting.name)" > {{ paket?.name }} </ion-option>
-                </ion-select>
-              </ion-item>
-              <ion-item>
-                <button color="royal" (click)="updatePackage()" ion-button full>Güncelle</button>
-              </ion-item>
-            </ion-list>
-          </ion-card>          
-        </ion-col>
-      </ion-row>
+      <ion-card>
+        <ion-card-header id="money-header">
+          <ion-icon name="cash"></ion-icon> Paket Güncelle
+        </ion-card-header>            
+        <ion-list id="project-detail" *ngIf="project?.hosting">
+          <ion-item>
+            <ion-label>Paket</ion-label>
+            <ion-select [(ngModel)]="package">
+              <ion-option *ngFor="let paket of project?.paketler" [value] = "paket?.name" [selected] = "(paket?.name == project?.hosting.name)" > {{ paket?.name }} </ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <button color="royal" (click)="updatePackage()" ion-button full>Güncelle</button>
+          </ion-item>
+        </ion-list>
+      </ion-card>
 
+      <ion-card>
+        <ion-card-header id="email-header">
+          <ion-icon name="add-circle"></ion-icon> E-posta Hesabı Ekle
+        </ion-card-header>
+        <ion-list>
 
-       <ion-row>
-        <ion-col>
-          <ion-card>
-            <ion-card-header id="email-header">
-              <ion-icon name="add-circle"></ion-icon> E-posta Hesabı Ekle
-            </ion-card-header>
-            <ion-list>
-
-              <ion-item>
-                <ion-label color="calm" stacked>E-posta</ion-label>
-                <ion-input type="text" placeholder="E-posta Kullanıcı Adı" [(ngModel)]="mailUser"></ion-input>
-              </ion-item>
+          <ion-item>
+            <ion-label color="calm" stacked>E-posta</ion-label>
+            <ion-input type="text" placeholder="E-posta Kullanıcı Adı" [(ngModel)]="mailUser"></ion-input>
+          </ion-item>
 
 
-              <ion-item>
-                <ion-label color="calm" stacked>Parola</ion-label>
-                <ion-input [(ngModel)]="mailPass" type="password" placeholder="E-posta Parola"></ion-input>
-              </ion-item>
+          <ion-item>
+            <ion-label color="calm" stacked>Parola</ion-label>
+            <ion-input [(ngModel)]="mailPass" type="password" placeholder="E-posta Parola"></ion-input>
+          </ion-item>
 
-              <ion-item>
-                <ion-label color="calm" stacked>Parola Tekrar</ion-label>
-                <ion-input type="password" placeholder="E-posta Parola Tekrar" [(ngModel)]="mailPass2"></ion-input>
-              </ion-item>
-              
-              <ion-item>
-                <ion-label color="calm" stacked>Alan Adı</ion-label>
-                <ion-select [(ngModel)]="mailDomain">
-                    <ion-option *ngFor="let domain of project?.project.domainler" [value] = "domain" [selected] = "(project?.project.main_domain == domain)"> {{ domain }} </ion-option>
-                </ion-select>
-              </ion-item>            
+          <ion-item>
+            <ion-label color="calm" stacked>Parola Tekrar</ion-label>
+            <ion-input type="password" placeholder="E-posta Parola Tekrar" [(ngModel)]="mailPass2"></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label color="calm" stacked>Alan Adı</ion-label>
+            <ion-select [(ngModel)]="mailDomain">
+                <ion-option *ngFor="let domain of project?.project.domainler" [value] = "domain" [selected] = "(project?.project.main_domain == domain)"> {{ domain }} </ion-option>
+            </ion-select>
+          </ion-item>            
 
-              <ion-item>
-                <ion-label color="calm" stacked>Kota</ion-label>
-                <ion-select [(ngModel)]="mailKota">
-                  <ion-option [value] = "50" [selected] = "true" > 50 MB </ion-option>
-                  <ion-option [value] = "100"> 100 MB </ion-option>
-                  <ion-option [value] = "150"> 150 MB </ion-option>
-                  <ion-option [value] = "200"> 200 MB </ion-option>
-                  <ion-option [value] = "250"> 250 MB </ion-option>                  
-                </ion-select>
-              </ion-item>   
+          <ion-item>
+            <ion-label color="calm" stacked>Kota</ion-label>
+            <ion-select [(ngModel)]="mailKota">
+              <ion-option [value] = "50" [selected] = "true" > 50 MB </ion-option>
+              <ion-option [value] = "100"> 100 MB </ion-option>
+              <ion-option [value] = "150"> 150 MB </ion-option>
+              <ion-option [value] = "200"> 200 MB </ion-option>
+              <ion-option [value] = "250"> 250 MB </ion-option>                  
+            </ion-select>
+          </ion-item>   
 
 
-              <button color="calm" (click)="addEmail(project?.project.description.cpuser, project?.project.description.cpass)" ion-button full>Oluştur</button>
-            </ion-list>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-
+          <button color="calm" (click)="addEmail(project?.project.description.cpuser, project?.project.description.cpass)" ion-button full>Oluştur</button>
+        </ion-list>
+      </ion-card>
     </div>
 
+    <ion-card>
+      <ion-card-header id="money-header">
+        <ion-icon name="cash"></ion-icon> Hesap Hareketleri
+      </ion-card-header>            
+      <ion-list id="project-detail" *ngIf="project?.payments">
+        <ion-item (click)="presentToast(payment?.description, payment?.trh)" color="white" *ngFor="let payment of project?.payments">
+          <b>{{ payment?.name }}</b>
+          <ion-badge *ngIf="payment?.gelirorgider==0" color="color5" item-right>{{ payment?.amount }} TL</ion-badge>
+          <ion-badge *ngIf="payment?.gelirorgider==1" color="balanced" item-right>{{ payment?.amount }} TL</ion-badge>
+        </ion-item>  
+      </ion-list>
+    </ion-card> 
 
-    <ion-row>
-      <ion-col>          
-          <ion-card>
-            <ion-card-header id="money-header">
-              <ion-icon name="cash"></ion-icon> Hesap Hareketleri
-            </ion-card-header>            
-            <ion-list id="project-detail" *ngIf="project?.payments">
-              <ion-item (click)="presentToast(payment?.description, payment?.trh)" color="white" *ngFor="let payment of project?.payments">
-                <b>{{ payment?.name }}</b>
-                <ion-badge *ngIf="payment?.gelirorgider==0" color="color5" item-right>{{ payment?.amount }} TL</ion-badge>
-                <ion-badge *ngIf="payment?.gelirorgider==1" color="balanced" item-right>{{ payment?.amount }} TL</ion-badge>
-              </ion-item>  
-            </ion-list>
-          </ion-card>          
-        </ion-col>
-
-        <ion-col>          
-          <ion-card>
-            <ion-card-header id="renew-header">
-              <ion-icon name="cash"></ion-icon> Yıllık Ödemeler
-            </ion-card-header>            
-            <ion-list id="project-detail" *ngIf="project?.renew_payments">
-              <ion-item color="white" *ngFor="let payment of project?.renew_payments">
-                {{ payment?.daty  }}
-                <ion-badge color="color5" item-right>{{ payment?.amount }} TL</ion-badge>
-              </ion-item>  
-            </ion-list>
-          </ion-card>          
-        </ion-col>
-
-    </ion-row>
+    <ion-card>
+      <ion-card-header id="renew-header">
+        <ion-icon name="cash"></ion-icon> Yıllık Ödemeler
+      </ion-card-header>            
+      <ion-list id="project-detail" *ngIf="project?.renew_payments">
+        <ion-item color="white" *ngFor="let payment of project?.renew_payments">
+          {{ payment?.daty  }}
+          <ion-badge color="color5" item-right>{{ payment?.amount }} TL</ion-badge>
+        </ion-item>  
+      </ion-list>
+    </ion-card>   
 
     <ion-row>
       <ion-col>

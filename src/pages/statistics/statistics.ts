@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { PostService } from '../home/postservice';
-import { HomePage } from '../home/home';
+import { Userpage } from '../userpage/userpage';
 import { Projectpage } from '../projectpage/projectpage';
 import { Customerpage } from '../customerpage/customerpage';
 import { Chart } from 'chart.js';
@@ -35,7 +35,7 @@ export class Statistics {
     if(window.localStorage.getItem('globalmedia')) {
       this.getStatistics();
     }else{
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(Userpage);
     }
   }
 
@@ -53,7 +53,7 @@ export class Statistics {
       }else{
         loader.dismiss();
         this.showAlert('HATA!','Veriler Getirilemedi');
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(Userpage);
       }
     });
   }
@@ -108,7 +108,7 @@ export class Statistics {
   }
 
   logout() {
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(Userpage);
   }
 
   ionViewDidLoad() {

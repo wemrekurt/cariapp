@@ -100,10 +100,10 @@
           <ion-icon name="text"></ion-icon>
           Sms
         </button>
-        <button ion-button (click)="callIt('tel:'+project?.customer.cphone)" color="secondary" icon-left>
+        <a ion-button href="tel:{{ project?.customer.cphone }}" color="secondary" icon-left>
           <ion-icon name="call"></ion-icon>
           Ara
-        </button>
+        </a>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>

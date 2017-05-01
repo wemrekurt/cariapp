@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { PostService } from '../home/postservice';
-import { HomePage } from '../home/home';
+import { Userpage } from '../userpage/userpage';
 import { Projectpage } from '../projectpage/projectpage';
 
 
@@ -41,11 +41,11 @@ export class Projects {
         }else{
           loader.dismiss();
           this.showAlert('HATA!','Veriler Getirilemedi');
-          this.navCtrl.setRoot(HomePage);        
+          this.navCtrl.setRoot(Userpage);        
         }
       });
     }else{
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(Userpage);
     }
 
   }
@@ -84,7 +84,7 @@ export class Projects {
   }
 
   gohome() {
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(Userpage);
   }
   
 

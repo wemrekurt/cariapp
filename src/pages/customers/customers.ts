@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { PostService } from '../home/postservice';
-import { HomePage } from '../home/home';
+import { Userpage } from '../userpage/userpage';
 import { Customerpage } from '../customerpage/customerpage';
 
 
@@ -31,7 +31,7 @@ export class Customers {
     if(window.localStorage.getItem('globalmedia')) {
       this.getCustomers();
     }else{
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(Userpage);
     }
   }
 
@@ -48,7 +48,7 @@ export class Customers {
       }else{
         loader.dismiss();
         this.showAlert('HATA!','Veriler Getirilemedi');
-        this.navCtrl.setRoot(HomePage);        
+        this.navCtrl.setRoot(Userpage);        
       }
     });
   }

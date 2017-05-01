@@ -9,7 +9,6 @@ import { Projects } from '../pages/projects/projects';
 import { Customers } from '../pages/customers/customers';
 import { Statistics } from '../pages/statistics/statistics';
 import { Sms } from '../pages/sms/sms';
-import { Lost } from '../pages/lost/lost';
 
 //import { LoginPage } from '../pages/login/login';
 

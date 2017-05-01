@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { PostService } from '../home/postservice';
-import { HomePage } from '../home/home';
+import { Userpage } from '../userpage/userpage';
 
 /**
  * Generated class for the Projectpage page.
@@ -68,11 +68,11 @@ export class Projectpage {
         }else{
           loader.dismiss();
           this.showAlert('HATA!','Veriler Getirilemedi');
-          this.navCtrl.setRoot(HomePage);        
+          this.navCtrl.setRoot(Userpage);        
         }
       });
     }else{
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(Userpage);
     }    
   }
 

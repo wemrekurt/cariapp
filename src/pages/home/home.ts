@@ -17,6 +17,7 @@ declare var Connection: any;
 export class HomePage {
 
     usercreds = {
+        nick: '',
         name: '',
         password: ''
     };
@@ -26,13 +27,23 @@ export class HomePage {
             if(data){
                 this.navCtrl.setRoot(Userpage);
             }else{
-                //TODO: Burada kullanıcı adı ve parola otomatik girilmeli. (Bir önceki girişten tutulmalı)
-                if(window.localStorage.getItem('globalmedia')){
-                    console.log(window.localStorage.getItem('globalmedia'));
-                }
+                if(window.localStorage.getItem('user_email')){
+                    this.usercreds.name = window.localStorage.getItem('user_email');
+                    this.usercreds.nick = window.localStorage.getItem('user_name');
+                }            
             }
         });
      }
+
+    forget(){
+        this.usercreds = {
+            nick: '',
+            name: '',
+            password: ''
+        };
+        window.localStorage.removeItem('user_email');
+        window.localStorage.removeItem('user_name');
+    }
 
     login(user) {
         if(user.name && user.password){

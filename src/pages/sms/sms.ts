@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { PostService } from '../home/postservice';
-import { HomePage } from '../home/home';
+import { Userpage } from '../userpage/userpage';
 
 /**
  * Generated class for the Sms page.
@@ -45,11 +45,11 @@ export class Sms {
         }else{
           loader.dismiss();
           this.showAlert('HATA!','Veriler Getirilemedi');
-          this.navCtrl.setRoot(HomePage);        
+          this.navCtrl.setRoot(Userpage);        
         }
       });
     }else{
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(Userpage);
     }
 
   }
@@ -64,7 +64,7 @@ export class Sms {
   }
 
   gohome() {
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(Userpage);
   }
 
   sendEveryone(){

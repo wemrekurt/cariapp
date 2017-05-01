@@ -15,55 +15,44 @@
 <ion-content id="mainarea" padding>
     <h2>Hoşgeldin, {{ header_datas?.userinfo.name }}</h2>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-card>
-            <ion-card-header color="color5">
-              <ion-icon name="alarm"></ion-icon> Yıllık ({{ header_datas?.lastxprj }})
-            </ion-card-header>            
-            <ion-list >
-              <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.lastxdays" (click)="loadPage(item?.id)">
-                {{ item?.name }} ({{ item?.kalan }} gün) - ({{ item?.renew_price }} TL)
-              </button>  
-            </ion-list>
-          </ion-card>
-        </ion-col>
+    <ion-card>
+      <ion-card-header color="color5">
+        <ion-icon name="alarm"></ion-icon> Yıllık ({{ header_datas?.lastxprj }})
+      </ion-card-header>            
+      <ion-list >
+        <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.lastxdays" (click)="loadPage(item?.id)">
+          {{ item?.name }} ({{ item?.kalan }} gün) - ({{ item?.renew_price }} TL)
+        </button>  
+      </ion-list>
+    </ion-card>
+    <ion-card>
 
-        <ion-col>
+    <ion-card-header color="color5">
+      <ion-icon name="logo-tux"></ion-icon> Sunucu ({{ header_datas?.dropsize }})
+    </ion-card-header>
+    <ion-list>
+      <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.dropletspay">
+        {{ item?.project.name }} ({{ item?.kalan }} gün) - ({{ item?.amount }} $)
+      </button>  
+    </ion-list>
+  </ion-card>
 
-          <ion-card>
-            <ion-card-header color="color5">
-              <ion-icon name="logo-tux"></ion-icon> Sunucu ({{ header_datas?.dropsize }})
-            </ion-card-header>
-            <ion-list>
-              <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.dropletspay">
-                {{ item?.project.name }} ({{ item?.kalan }} gün) - ({{ item?.amount }} $)
-              </button>  
-            </ion-list>
-          </ion-card>
-        </ion-col>
+  <ion-card>
+    <ion-card-header color="color5">
+      <ion-icon name="alert"></ion-icon> Süresi Dolan ({{ header_datas?.lastoldxprj }})
+    </ion-card-header>
+    <ion-list>
+      <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.oldyears" (click)="loadPage(item?.id)">
+        {{ item?.name }} ({{ item?.kalan }} gün) - ({{ item?.renew_price }} TL)
+      </button>  
+    </ion-list>
+  </ion-card>
+     
 
-        <ion-col>
-          <ion-card>
-            <ion-card-header color="color5">
-              <ion-icon name="alert"></ion-icon> Süresi Dolan ({{ header_datas?.lastoldxprj }})
-            </ion-card-header>
-            <ion-list>
-              <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.oldyears" (click)="loadPage(item?.id)">
-                {{ item?.name }} ({{ item?.kalan }} gün) - ({{ item?.renew_price }} TL)
-              </button>  
-            </ion-list>
-          </ion-card>
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
 
      <ion-grid>
       <ion-row>
-        <ion-col>
-          
+        <ion-col>          
           <ion-item>
             <ion-icon color="calm" name="logo-twitter" item-left></ion-icon>
             <p id="small-font">Proje Sayısı: </p>
@@ -81,9 +70,7 @@
             <p id="small-font">Toplam Kazanç: </p>
             <ion-badge color="color5" item-right>{{ dashboard?.gToplamGelir }} TL</ion-badge>
           </ion-item>
-
         </ion-col>
-
       </ion-row>
     </ion-grid>
 

@@ -6,21 +6,27 @@
 </ion-header>
 
 <ion-content padding>
+  <p><img class="center" src="assets/img/logo.png" /></p>
+  <hr />
   <h3>Giriş Yap</h3>
+
+  <p *ngIf="usercreds.nick">Merhaba {{ usercreds.nick }}, parolanızı yazarak giriş yapabilirsiniz.</p>
 
   <p>
     <ion-item>
       <ion-label floating>E-posta</ion-label>
-      <ion-input [(ngModel)]="usercreds.name" type="text"></ion-input>
+      <ion-input [(ngModel)]="usercreds.name" type="text" ></ion-input>
+      <button *ngIf="usercreds.nick" clear ion-button item-right (click)="forget()">Unut</button>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Parola</ion-label>
       <ion-input [(ngModel)]="usercreds.password" type="password"></ion-input>
-    </ion-item>
-    
+    </ion-item>   
 
   </p>
 
-  <button ion-button  (click)="login(usercreds)">GİRİŞ YAP</button>
+  <button ion-button color="calm" (click)="login(usercreds)">GİRİŞ YAP</button>
+
+  
 </ion-content>

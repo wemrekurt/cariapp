@@ -15,8 +15,7 @@ export class AuthService {
     
     storeUserCredentials(token) {
         window.localStorage.setItem('globalmedia', token);
-        this.useCredentials(token);
-        
+        this.useCredentials(token);        
     }
     
     storeUserInformation(id, name, email){
@@ -38,7 +37,8 @@ export class AuthService {
     destroyUserCredentials() {
         this.isLoggedin = false;
         this.AuthToken = null;
-        window.localStorage.clear();
+        window.localStorage.removeItem('globalmedia');
+        window.localStorage.removeItem('user_id');
     }
     
     authenticate(user) {
