@@ -107,6 +107,10 @@ export class Statistics {
     alert.present();
   }
 
+  logout() {
+    this.navCtrl.setRoot(HomePage);
+  }
+
   ionViewDidLoad() {
 
   }
