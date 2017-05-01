@@ -1,12 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
-import {AuthService} from '../home/authservice';
-import {PostService} from '../home/postservice';
+import { AuthService } from '../home/authservice';
+import { PostService } from '../home/postservice';
 import { Projectpage } from '../projectpage/projectpage';
-
-
-import {HomePage} from '../home/home';
+import { HomePage } from '../home/home';
 import { Chart } from 'chart.js';
+import { Lost } from '../lost/lost';
 
 
 /*
@@ -33,6 +32,7 @@ export class Userpage {
     public alertCtrl: AlertController, 
     public loadingCtrl: LoadingController
   ) {
+      
     
     if(window.localStorage.getItem('globalmedia')) {
       let loader = this.loadingCtrl.create({
@@ -53,8 +53,7 @@ export class Userpage {
         }else{
           loader.dismiss();
           this.showAlert('HATA!','Index Verileri Getirilemedi');
-        //this.navCtrl.setRoot(HomePage); // TODO: Connection Lost or error page redirect   
-          
+          this.navCtrl.setRoot(Lost);          
         }
       });
 
@@ -135,4 +134,5 @@ export class Userpage {
       });
       alert.present();
     }
+
 }

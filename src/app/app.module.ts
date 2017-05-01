@@ -14,6 +14,7 @@ import { Customerpage } from '../pages/customerpage/customerpage';
 import { Projectpage } from '../pages/projectpage/projectpage';
 import { Statistics } from '../pages/statistics/statistics';
 import { Sms } from '../pages/sms/sms';
+import { Lost } from '../pages/lost/lost';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,7 +29,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Customerpage,
     Projectpage,
     Statistics,
-    Sms
+    Sms,
+    Lost
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Customerpage,
     Projectpage,
     Statistics,
-    Sms
+    Sms,
+    Lost
   ],
   providers: [
     StatusBar,

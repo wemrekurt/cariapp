@@ -51,7 +51,7 @@
             </ion-card-header>
             <ion-list>
               <button id="small-font" color="color2" ion-item *ngFor="let item of header_datas?.oldyears" (click)="loadPage(item?.id)">
-                {{ item?.name }} ({{ item?.kalan }} gün) - ({{ item?.price }} TL)
+                {{ item?.name }} ({{ item?.kalan }} gün) - ({{ item?.renew_price }} TL)
               </button>  
             </ion-list>
           </ion-card>
