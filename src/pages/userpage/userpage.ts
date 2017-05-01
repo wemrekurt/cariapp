@@ -35,7 +35,6 @@ export class Userpage {
   ) {
     
     if(window.localStorage.getItem('globalmedia')) {
-      let success = [0,0];
       let loader = this.loadingCtrl.create({
         content: "Veriler Getiriliyor. Lütfen bekleyin."
       });
