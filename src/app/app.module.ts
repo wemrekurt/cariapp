@@ -13,7 +13,7 @@ import { Customers } from '../pages/customers/customers';
 import { Customerpage } from '../pages/customerpage/customerpage';
 import { Projectpage } from '../pages/projectpage/projectpage';
 import { Statistics } from '../pages/statistics/statistics';
-
+import { Sms } from '../pages/sms/sms';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +27,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Customers,
     Customerpage,
     Projectpage,
-    Statistics
+    Statistics,
+    Sms
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Customers,
     Customerpage,
     Projectpage,
-    Statistics
+    Statistics,
+    Sms
   ],
   providers: [
     StatusBar,

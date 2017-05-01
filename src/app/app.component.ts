@@ -8,6 +8,7 @@ import { Userpage } from '../pages/userpage/userpage';
 import { Projects } from '../pages/projects/projects';
 import { Customers } from '../pages/customers/customers';
 import { Statistics } from '../pages/statistics/statistics';
+import { Sms } from '../pages/sms/sms';
 
 
 //import { LoginPage } from '../pages/login/login';
@@ -31,7 +32,8 @@ export class MyApp {
       { title: 'Dashboard', component: Userpage },
       { title: 'Müşteriler', component: Customers},
       { title: 'Projeler', component: Projects },
-      { title: 'İstatistikler', component: Statistics }
+      { title: 'İstatistikler', component: Statistics },
+      { title: 'SMS', component: Sms },
     ];
 
   }
