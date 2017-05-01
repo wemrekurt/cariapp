@@ -82,6 +82,10 @@ export class Projects {
     });
     alert.present();
   }
+
+  gohome() {
+    this.navCtrl.setRoot(HomePage);
+  }
   
 
   ionViewDidLoad() {

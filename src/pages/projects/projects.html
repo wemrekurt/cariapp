@@ -11,8 +11,8 @@
     </button>
     <ion-title>Projeler</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="power"></ion-icon>
+      <button ion-button (click)="gohome()" icon-only>
+        <ion-icon name="home"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -21,7 +21,7 @@
 
 <ion-content id="mainarea" padding>
 
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar placeholder="Ara" (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel"></ion-searchbar>
   <ion-list>
     <button ion-item *ngFor="let item of filtered_projects" (click)="loadPage(item?.id)">
       {{ item?.name }}

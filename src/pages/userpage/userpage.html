@@ -5,7 +5,7 @@
     </button>
     <ion-title>DashBoard</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only>
+      <button ion-button (click)="logout()" icon-only>
         <ion-icon name="power"></ion-icon>
       </button>
     </ion-buttons>
@@ -94,5 +94,5 @@
       <canvas #barCanvas></canvas>
     </ion-card>
 
-    <button ion-button (click) = "logout()">ÇIKIŞ YAP</button>
+
 </ion-content>
