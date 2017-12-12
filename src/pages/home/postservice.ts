@@ -7,21 +7,21 @@ import 'rxjs/add/operator/timeout';
 @Injectable()
 export class PostService {
 
-    public url: string = 'http://www.globalcari.com/api/';
+    public url: string = 'https://www.globalcari.com/api/';
 
     constructor(public http: Http, public authservice: AuthService) {
         this.http = http;
     }
 
 
-    getPage(page) {       
+    getPage(page) {
         return new Promise(resolve => {
             var headers = new Headers();
             this.authservice.loadUserCredentials();
             headers.append('Authorization', 'Bearer: ' +this.authservice.AuthToken);
             this.http.get(this.url+page+'.json', {headers: headers}).map(res => res.json()).subscribe(data => {
                 if(data.response == 'success'){
-                    resolve(data);                    
+                    resolve(data);
                 }else{
                     resolve(false);
                 }
@@ -29,12 +29,12 @@ export class PostService {
         });
     }
 
-    postPage(page, params){             
+    postPage(page, params){
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         this.authservice.loadUserCredentials();
         headers.append('Authorization', 'Bearer: ' +this.authservice.AuthToken);
-        
+
         return new Promise(resolve => {
             this.http.post(this.url+page+'.json', params, {headers: headers}).map(res => res.json()).subscribe(data => {
                 if(data.response == 'success'){
@@ -49,6 +49,6 @@ export class PostService {
 
 
 
-    
+
 
 }
